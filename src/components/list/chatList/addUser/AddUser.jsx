@@ -12,10 +12,12 @@ import {
 } from "firebase/firestore";
 import { useState } from "react";
 import { useUserStore } from "../../../../lib/userStore";
+import { useChatStore } from "../../../../lib/chatStore";
 
 const AddUser = () => {
 	const [user, setUser] = useState(null);
 	const { currentUser } = useUserStore();
+	const { setToggleMode } = useChatStore();
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
@@ -68,6 +70,8 @@ const AddUser = () => {
 			});
 		} catch (err) {
 			console.log(err);
+		} finally {
+			setToggleMode();
 		}
 	};
 
