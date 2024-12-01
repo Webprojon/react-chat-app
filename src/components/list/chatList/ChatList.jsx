@@ -7,11 +7,10 @@ import AddUser from "./addUser/AddUser";
 
 const ChatList = () => {
 	const [chats, setChats] = useState([]);
-	const [addMode, setAddMode] = useState(false);
 	const [input, setInput] = useState("");
 
 	const { currentUser } = useUserStore();
-	const { chatId, changeChat } = useChatStore();
+	const { chatId, changeChat, addMode, setToggleMode } = useChatStore();
 
 	useEffect(() => {
 		const unSub = onSnapshot(
@@ -82,7 +81,7 @@ const ChatList = () => {
 					src={addMode ? "./minus.png" : "./plus.png"}
 					alt="plus img"
 					className="w-[24px] cursor-pointer"
-					onClick={() => setAddMode((prev) => !prev)}
+					onClick={setToggleMode}
 				/>
 			</div>
 
