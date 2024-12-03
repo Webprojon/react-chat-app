@@ -7,7 +7,7 @@ import {
 	onSnapshot,
 	updateDoc,
 } from "firebase/firestore";
-import { db } from "../../lib/firebase";
+import { auth, db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
@@ -15,6 +15,7 @@ import { IoArrowBackSharp, IoLogOutOutline } from "react-icons/io5";
 import { HiDotsVertical } from "react-icons/hi";
 import { MdBlock } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { useHandleBlock } from "../../lib/customHook/useHandleBlock";
 
 export default function Chat() {
 	const [openMore, setOpenMore] = useState(false);
@@ -35,6 +36,7 @@ export default function Chat() {
 		file: null,
 		url: "",
 	});
+	const handleBlock = useHandleBlock();
 
 	useEffect(() => {
 		endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -124,7 +126,7 @@ export default function Chat() {
 
 	return (
 		<div
-			className={`h-[100%] flex-[2] flex-col border-r border-l border-[#545454] 
+			className={`h-[100%] flex-[2] flex-col md:border-r md:border-l border-[#545454] 
 				${isOpenPage ? "flex" : "hidden"}`}
 		>
 			{/* Top */}
@@ -154,19 +156,31 @@ export default function Chat() {
 				<div className="cursor-pointer relative">
 					<HiDotsVertical className="size-6" onClick={handleOpen} />
 					<div
-						className={`flex-col gap-3 absolute right-0 top-9 z-10 rounded-md w-[170px] p-3 bg-slate-700 opacity-95
+						className={`flex-col gap-6 text-[18px] absolute right-2 top-9 z-10 rounded-md w-[170px] p-5 bg-slate-900 opacity-95
 							 ${openMore ? "flex" : "hidden"}`}
 					>
-						<span className="flex items-center gap-2" onClick={handleOpen}>
-							<MdBlock className="size-5" />
+						<span
+							className="flex items-center gap-3"
+							onClick={() => {
+								handleOpen();
+								handleBlock();
+							}}
+						>
+							<MdBlock className="size-6" />
 							Block User
 						</span>
-						<span className="flex items-center gap-2" onClick={handleOpen}>
-							<IoLogOutOutline className="size-5" />
+						<span
+							className="flex items-center gap-3"
+							onClick={() => {
+								handleOpen();
+								auth.signOut();
+							}}
+						>
+							<IoLogOutOutline className="size-6" />
 							Logout
 						</span>
-						<span className="flex items-center gap-2" onClick={handleOpen}>
-							<RiDeleteBin5Line className="size-5" />
+						<span className="flex items-center gap-3" onClick={handleOpen}>
+							<RiDeleteBin5Line className="size-6" />
 							Delete Chat
 						</span>
 					</div>

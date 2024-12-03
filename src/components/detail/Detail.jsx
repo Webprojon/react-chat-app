@@ -1,34 +1,14 @@
 import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
 import { PiDownloadSimple } from "react-icons/pi";
-import { auth, db } from "../../lib/firebase";
+import { auth } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
-import { useUserStore } from "../../lib/userStore";
-import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { useHandleBlock } from "../../lib/customHook/useHandleBlock";
 
 export default function Detail() {
-	const { currentUser } = useUserStore();
-	const {
-		user,
-		resetChat,
-		changeBlock,
-		isReceiverBlocked,
-		isCurrentUserBlocked,
-	} = useChatStore();
+	const { user, resetChat, isReceiverBlocked, isCurrentUserBlocked } =
+		useChatStore();
 
-	const handleBlock = async () => {
-		if (!user) return;
-
-		const userDocRef = doc(db, "users", currentUser.id);
-
-		try {
-			await updateDoc(userDocRef, {
-				blocked: isReceiverBlocked ? arrayRemove(user.id) : arrayUnion(user.id),
-			});
-			changeBlock();
-		} catch (err) {
-			console.log(err);
-		}
-	};
+	const handleBlock = useHandleBlock();
 
 	const handleLogout = () => {
 		auth.signOut();

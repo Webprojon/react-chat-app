@@ -9,8 +9,8 @@ export default defineConfig({
 			registerType: "prompt",
 			includeAssets: ["favicon.ico", "apple-touch-icon.png", "maskable.png"],
 			manifest: {
-				name: "Online Chat",
-				short_name: "Online Chat",
+				name: "Messenger",
+				short_name: "Messenger",
 				description: "React Online Chat App",
 				icons: [
 					{
@@ -30,8 +30,8 @@ export default defineConfig({
 						type: "image/png",
 					},
 				],
-				theme_color: "#1E40AF",
-				background_color: "#1E40AF",
+				theme_color: "#007CEB",
+				background_color: "#007CEB",
 				display: "standalone",
 				scope: "/",
 				start_url: "/",
