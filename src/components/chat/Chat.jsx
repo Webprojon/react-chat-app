@@ -11,10 +11,13 @@ import { db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
-import { IoArrowBackSharp } from "react-icons/io5";
+import { IoArrowBackSharp, IoLogOutOutline } from "react-icons/io5";
 import { HiDotsVertical } from "react-icons/hi";
+import { MdBlock } from "react-icons/md";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 export default function Chat() {
+	const [openMore, setOpenMore] = useState(false);
 	const [chat, setChat] = useState();
 	const [isEmoji, setIsEmoji] = useState(false);
 	const [text, setText] = useState("");
@@ -115,6 +118,10 @@ export default function Chat() {
 		}
 	};
 
+	const handleOpen = () => {
+		setOpenMore((prev) => !prev);
+	};
+
 	return (
 		<div
 			className={`h-[100%] flex-[2] flex-col border-r border-l border-[#545454] 
@@ -144,8 +151,25 @@ export default function Chat() {
 					</div>
 				</div>
 
-				<div className="flex items-center cursor-pointer gap-x-4">
-					<HiDotsVertical className="size-6" />
+				<div className="cursor-pointer relative">
+					<HiDotsVertical className="size-6" onClick={handleOpen} />
+					<div
+						className={`flex-col gap-3 absolute right-0 top-9 z-10 rounded-md w-[170px] p-3 bg-slate-700 opacity-95
+							 ${openMore ? "flex" : "hidden"}`}
+					>
+						<span className="flex items-center gap-2" onClick={handleOpen}>
+							<MdBlock className="size-5" />
+							Block User
+						</span>
+						<span className="flex items-center gap-2" onClick={handleOpen}>
+							<IoLogOutOutline className="size-5" />
+							Logout
+						</span>
+						<span className="flex items-center gap-2" onClick={handleOpen}>
+							<RiDeleteBin5Line className="size-5" />
+							Delete Chat
+						</span>
+					</div>
 				</div>
 			</div>
 
@@ -195,7 +219,7 @@ export default function Chat() {
 					className="w-[150px] flex-1 text-slate-300 placeholder:text-slate-300 outline-none bg-slate-800 rounded-md py-3 md:py-2 px-3 disabled:cursor-not-allowed"
 				/>
 
-				<div className="relative">
+				<div className="hidden md:block relative">
 					<img
 						src="./emoji.png"
 						alt="emoji img"
