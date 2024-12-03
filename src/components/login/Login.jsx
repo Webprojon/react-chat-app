@@ -16,6 +16,7 @@ import {
 import upload from "../../lib/upload";
 
 export default function Login() {
+	const [isLogin, setIsLogin] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [avatar, setAvatar] = useState({
 		file: null,
@@ -94,9 +95,12 @@ export default function Login() {
 	};
 
 	return (
-		<div className="w-[100%] h-[100%] flex items-center justify-center gap-[100px]">
+		<div className="w-[100%] h-[100%] flex items-center justify-center md:gap-[100px]">
 			{/* Login */}
-			<div className="flex-1 flex flex-col items-center gap-[20px]">
+			<div
+				className={`flex-1 flex flex-col items-center gap-[20px] 
+					${isLogin ? "hidden" : "flex"}`}
+			>
 				<h2 className="text-[30px] tracking-wide font-semibold">
 					Welcome back,
 				</h2>
@@ -125,12 +129,18 @@ export default function Login() {
 						{loading ? "Loading..." : "Sign In"}
 					</button>
 				</form>
+				<p className="md:hidden" onClick={() => setIsLogin((prev) => !prev)}>
+					If you dont have an account ! register
+				</p>
 			</div>
 
 			<div className="w-[1px] h-[80%] bg-[#545454]"></div>
 
 			{/* Register */}
-			<div className="flex-1 flex flex-col items-center gap-[20px]">
+			<div
+				className={`flex-1 flex flex-col items-center gap-[20px]
+					 ${isLogin ? "flex" : "hidden md:flex"}`}
+			>
 				<h2 className="text-[30px] tracking-wide font-semibold">
 					Create an Account
 				</h2>
@@ -184,6 +194,9 @@ export default function Login() {
 						{loading ? "Loading..." : "Sign Up"}
 					</button>
 				</form>
+				<p className="md:hidden" onClick={() => setIsLogin((prev) => !prev)}>
+					If you have an account ! login
+				</p>
 			</div>
 		</div>
 	);
