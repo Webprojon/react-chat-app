@@ -10,7 +10,8 @@ const ChatList = () => {
 	const [input, setInput] = useState("");
 
 	const { currentUser } = useUserStore();
-	const { chatId, changeChat, addMode, setToggleMode } = useChatStore();
+	const { chatId, changeChat, addMode, setToggleMode, setTogglePage } =
+		useChatStore();
 
 	useEffect(() => {
 		const unSub = onSnapshot(
@@ -39,6 +40,8 @@ const ChatList = () => {
 	}, [currentUser.id]);
 
 	const handleSelect = async (chat) => {
+		setTogglePage();
+
 		const userChats = chats.map((item) => {
 			const { user, ...rest } = item;
 			console.log(user, chatId);
@@ -92,7 +95,7 @@ const ChatList = () => {
 					style={{
 						backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",
 					}}
-					className="flex cursor-pointer mt-4 p-2 gap-x-3 border-b border-[#545454] hover:border-[#bbb4b4]"
+					className="flex items-center cursor-pointer mt-4 p-2 gap-x-3 border-b border-[#545454] hover:border-[#bbb4b4]"
 				>
 					<img
 						src={

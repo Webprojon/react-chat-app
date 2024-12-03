@@ -36,7 +36,7 @@ export default function Detail() {
 	};
 
 	return (
-		<div className="flex-1">
+		<div className="flex-1 hidden md:block">
 			{/* user */}
 			<div className="flex flex-col justify-center items-center gap-2 p-3 border-b border-[#545454]">
 				<img

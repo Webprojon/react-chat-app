@@ -4,11 +4,12 @@ import { useUserStore } from "./userStore";
 export const useChatStore = create((set) => ({
 	chatId: null,
 	addMode: false,
+	isOpenPage: false,
 	user: null,
 	isCurrentUserBlocked: false,
 	isReceiverBlocked: false,
 	setToggleMode: () => set((state) => ({ addMode: !state.addMode })),
-
+	setTogglePage: () => set((state) => ({ isOpenPage: !state.isOpenPage })),
 	changeChat: (chatId, user) => {
 		const currentUser = useUserStore.getState().currentUser;
 

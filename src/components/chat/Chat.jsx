@@ -11,14 +11,22 @@ import { db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
+import { IoArrowBackSharp } from "react-icons/io5";
+import { HiDotsVertical } from "react-icons/hi";
 
 export default function Chat() {
 	const [chat, setChat] = useState();
 	const [isEmoji, setIsEmoji] = useState(false);
 	const [text, setText] = useState("");
 	const endRef = useRef(null);
-	const { chatId, user, isReceiverBlocked, isCurrentUserBlocked } =
-		useChatStore();
+	const {
+		chatId,
+		user,
+		isOpenPage,
+		setTogglePage,
+		isReceiverBlocked,
+		isCurrentUserBlocked,
+	} = useChatStore();
 	const { currentUser } = useUserStore();
 	const [img, setImg] = useState({
 		file: null,
@@ -108,27 +116,36 @@ export default function Chat() {
 	};
 
 	return (
-		<div className="h-[100%] flex-[2] flex flex-col border-r border-l border-[#545454]">
+		<div
+			className={`h-[100%] flex-[2] flex-col border-r border-l border-[#545454] 
+				${isOpenPage ? "flex" : "hidden"}`}
+		>
 			{/* Top */}
 			<div className="flex justify-between items-center border-b border-[#545454] p-3">
 				<div className="flex items-center gap-x-4">
-					<img
-						alt="user img"
-						src={user?.avatar || "./avatar.png"}
-						className="w-[50px] h-[50px] object-cover rounded-full"
+					<IoArrowBackSharp
+						onClick={setTogglePage}
+						className="size-6 text-sla2te-00 md:hidden"
 					/>
-					<div>
-						<span className="font-semibold text-[18px]">{user?.username}</span>
-						<p className="font-light text-[14px] text-slate-300">
-							Lorem ipsum dolor sit
-						</p>
+					<div className="flex gap-3">
+						<img
+							alt="user img"
+							src={user?.avatar || "./avatar.png"}
+							className="w-[50px] h-[50px] object-cover rounded-full"
+						/>
+						<div>
+							<span className="font-semibold text-[18px]">
+								{user?.username}
+							</span>
+							<p className="font-light text-[14px] text-slate-300">
+								Lorem ipsum dolor sit
+							</p>
+						</div>
 					</div>
 				</div>
 
 				<div className="flex items-center cursor-pointer gap-x-4">
-					<img src="./phone.png" alt="phone" className="w-[20px]" />
-					<img src="./video.png" alt="video img" className="w-[20px]" />
-					<img src="./info.png" alt="info img" className="w-[20px]" />
+					<HiDotsVertical className="size-6" />
 				</div>
 			</div>
 
@@ -163,23 +180,6 @@ export default function Chat() {
 
 			{/* Bottom */}
 			<div className="mt-auto flex items-center justify-between gap-x-4 p-3 border-t border-[#545454]">
-				<div className="flex items-center gap-x-4 cursor-pointer">
-					<label htmlFor="file">
-						<img
-							alt="img"
-							src="./img.png"
-							className="w-[20px] cursor-pointer"
-						/>
-					</label>
-					<input
-						type="file"
-						id="file"
-						className="hidden"
-						onChange={handleImg}
-					/>
-					<img src="./mic.png" alt="img" className="w-[20px]" />
-				</div>
-
 				<input
 					type="text"
 					value={text}
@@ -203,6 +203,22 @@ export default function Chat() {
 					<div className="absolute bottom-[50px] left-0">
 						<EmojiPicker open={isEmoji} onEmojiClick={handleEmoji} />
 					</div>
+				</div>
+
+				<div className="flex items-center gap-x-4 cursor-pointer">
+					<label htmlFor="file">
+						<img
+							alt="img"
+							src="./img.png"
+							className="w-[20px] cursor-pointer"
+						/>
+					</label>
+					<input
+						type="file"
+						id="file"
+						className="hidden"
+						onChange={handleImg}
+					/>
 				</div>
 
 				<button

@@ -1,3 +1,4 @@
+import { HiDotsVertical } from "react-icons/hi";
 import { useUserStore } from "../../../lib/userStore";
 
 export default function Userinfo() {
@@ -14,11 +15,7 @@ export default function Userinfo() {
 				<h2 className="text-[18px] font-medium">{currentUser.username}</h2>
 			</div>
 
-			<div className="flex items-center gap-x-3 cursor-pointer">
-				<img src="./more.png" alt="icons" className="w-[20px] h-[20px]" />
-				<img src="./video.png" alt="icons" className="w-[20px] h-[20px]" />
-				<img src="./edit.png" alt="icons" className="w-[20px] h-[20px]" />
-			</div>
+			<HiDotsVertical className="size-6 cursor-pointer" />
 		</div>
 	);
 }
