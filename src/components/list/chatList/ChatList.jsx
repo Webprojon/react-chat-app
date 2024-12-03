@@ -69,7 +69,7 @@ const ChatList = () => {
 	);
 
 	return (
-		<div className="no-scrollbar overflow-y-scroll flex-1">
+		<div className="mt-2 no-scrollbar overflow-y-scroll flex-1">
 			<div className="p-3 flex items-center gap-x-4">
 				<div className="flex-1 flex items-center gap-x-3 rounded-md bg-slate-800 py-[10px] px-2">
 					<img src="./search.png" alt="search img" className="w-[24px]" />
@@ -77,7 +77,7 @@ const ChatList = () => {
 						type="text"
 						placeholder="Search"
 						onChange={(e) => setInput(e.target.value)}
-						className="bg-transparent outline-none text-white placeholder:text-white w-full"
+						className="py-[3px] md:py-0 bg-transparent outline-none text-white placeholder:text-white w-full"
 					/>
 				</div>
 				<img
@@ -95,7 +95,7 @@ const ChatList = () => {
 					style={{
 						backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",
 					}}
-					className="flex items-center cursor-pointer mt-4 p-2 gap-x-3 border-b border-[#545454] hover:border-[#bbb4b4]"
+					className="flex items-center cursor-pointer mt-4 p-2 gap-x-4 border-b border-[#545454] hover:border-[#bbb4b4]"
 				>
 					<img
 						src={
@@ -108,12 +108,12 @@ const ChatList = () => {
 					/>
 
 					<div>
-						<span className="font-semibold">
+						<span className="text-[18px] font-semibold">
 							{chat.user.blocked.includes(currentUser.id)
 								? "User"
 								: chat.user.username}
 						</span>
-						<p className="text-[14px] font-light text-slate-300">
+						<p className="text-[15px] md:text-[14px] font-light text-slate-300">
 							{chat.lastMessage}
 						</p>
 					</div>

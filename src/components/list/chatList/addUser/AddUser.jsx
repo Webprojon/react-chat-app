@@ -76,7 +76,10 @@ const AddUser = () => {
 	};
 
 	return (
-		<div className="max-w-max max-h-max absolute top-0 left-0 right-0 bottom-0 m-auto bg-black bg-opacity-80 p-12 rounded-md tracking-wide">
+		<div
+			className="w-[95%] h-[25vh] md:max-w-max md:max-h-max absolute top-0 left-0 right-0 bottom-0 m-auto bg-black bg-opacity-80 flex 
+		flex-col justify-center px-4 md:p-12 rounded-md tracking-wide"
+		>
 			<form onSubmit={handleSearch} className="flex gap-[20px]">
 				<input
 					type="text"

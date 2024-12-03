@@ -122,19 +122,19 @@ export default function Chat() {
 		>
 			{/* Top */}
 			<div className="flex justify-between items-center border-b border-[#545454] p-3">
-				<div className="flex items-center gap-x-4">
+				<div className="flex items-center gap-x-5">
 					<IoArrowBackSharp
 						onClick={setTogglePage}
-						className="size-6 text-sla2te-00 md:hidden"
+						className="size-7 text-sla2te-00 md:hidden"
 					/>
-					<div className="flex gap-3">
+					<div className="flex gap-4">
 						<img
 							alt="user img"
 							src={user?.avatar || "./avatar.png"}
 							className="w-[50px] h-[50px] object-cover rounded-full"
 						/>
 						<div>
-							<span className="font-semibold text-[18px]">
+							<span className="font-semibold text-[19px] md:text-[18px]">
 								{user?.username}
 							</span>
 							<p className="font-light text-[14px] text-slate-300">
@@ -162,7 +162,9 @@ export default function Chat() {
 							{message.img && (
 								<img alt="img" src={message.img} className="rounded-md" />
 							)}
-							<p className="text-[14px]">{message.text}</p>
+							<p className="font-medium text-[16px] md:text-[14px]">
+								{message.text}
+							</p>
 							{/*<span className="text-[12px]"></span>*/}
 						</div>
 					</div>
@@ -190,7 +192,7 @@ export default function Chat() {
 					}
 					onChange={(e) => setText(e.target.value)}
 					disabled={isCurrentUserBlocked || isReceiverBlocked}
-					className="flex-1 text-slate-300 placeholder:text-slate-300 outline-none bg-slate-800 rounded-md py-2 px-3 disabled:cursor-not-allowed"
+					className="w-[150px] flex-1 text-slate-300 placeholder:text-slate-300 outline-none bg-slate-800 rounded-md py-3 md:py-2 px-3 disabled:cursor-not-allowed"
 				/>
 
 				<div className="relative">
@@ -224,7 +226,7 @@ export default function Chat() {
 				<button
 					onClick={handleSend}
 					disabled={isCurrentUserBlocked || isReceiverBlocked}
-					className="py-1 px-3 rounded-md cursor-pointer bg-blue-700 hover:bg-blue-800 transition-all disabled:bg-blue-400 disabled:cursor-not-allowed"
+					className="py-2 md:py-1 px-3 rounded-md cursor-pointer bg-blue-700 hover:bg-blue-800 transition-all disabled:bg-blue-400 disabled:cursor-not-allowed"
 				>
 					Send
 				</button>

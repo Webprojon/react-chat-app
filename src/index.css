@@ -35,7 +35,7 @@ body {
 	p {
 		background-color: rgb(20, 45, 59);
 		border-radius: 5px;
-		padding: 5px 10px;
+		padding: 5px 12px;
 	}
 
 	&.own {
@@ -60,5 +60,11 @@ body {
 
 	&::placeholder {
 		color: white;
+	}
+}
+
+@media (max-width: 500px) {
+	.loginInputs {
+		padding: 12px;
 	}
 }

@@ -106,7 +106,7 @@ export default function Login() {
 				</h2>
 				<form
 					onSubmit={handleLogin}
-					className="w-[300px] flex flex-col items-center justify-center gap-[20px]"
+					className="w-[92%] md:w-[300px] flex flex-col items-center justify-center gap-[22px] md:gap-[20px]"
 				>
 					<input
 						type="email"
@@ -124,7 +124,7 @@ export default function Login() {
 					/>
 					<button
 						disabled={loading}
-						className="py-2 px-4 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-500 disabled:cursor-not-allowed transition-all font-medium rounded-md cursor-pointer"
+						className="py-3 md:py-2 px-4 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-500 disabled:cursor-not-allowed transition-all font-medium rounded-md cursor-pointer"
 					>
 						{loading ? "Loading..." : "Sign In"}
 					</button>
@@ -146,7 +146,7 @@ export default function Login() {
 				</h2>
 				<form
 					onSubmit={handleRegister}
-					className="w-[300px] flex flex-col items-center justify-center gap-[20px]"
+					className="w-[92%] md:w-[300px] flex flex-col items-center justify-center gap-[22px] md:gap-[20px]"
 				>
 					<label
 						htmlFor="file"
@@ -157,7 +157,7 @@ export default function Login() {
 							src={avatar.url || "./avatar.png"}
 							className="w-[50px] h-[50px] object-cover rounded-md"
 						/>
-						Upload am image
+						Upload an image
 					</label>
 					<input
 						type="file"
@@ -189,7 +189,7 @@ export default function Login() {
 					/>
 					<button
 						disabled={loading}
-						className="py-2 px-4 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-500 disabled:cursor-not-allowed transition-all font-medium rounded-md cursor-pointer"
+						className="py-3 md:py-2 px-4 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-500 disabled:cursor-not-allowed transition-all font-medium rounded-md cursor-pointer"
 					>
 						{loading ? "Loading..." : "Sign Up"}
 					</button>
