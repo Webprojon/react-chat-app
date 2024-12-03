@@ -27,7 +27,7 @@ function App() {
 		return <div className="text-[30px] md:text-[40px]">Loading...</div>;
 
 	return (
-		<div className="flex select-none w-[100vw] h-screen md:w-[87vw] md:h-[90vh] md:rounded-md bg-[rgba(17,25,40,0.87)] backdrop-blur-[19px] backdrop-saturate-[180%] md:border border-[#545454]">
+		<div className="flex select-none w-[100vw] h-screen md:w-[87vw] md:h-[90vh] md:rounded-md bg-[rgba(28,37,53,0.87)] backdrop-blur-[8px] backdrop-saturate-[180%] md:border border-[#545454]">
 			{currentUser ? (
 				<>
 					<List />
