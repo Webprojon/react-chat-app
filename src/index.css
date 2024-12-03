@@ -14,7 +14,7 @@ body {
 	color: white;
 	align-items: center;
 	justify-content: center;
-	background: url("https://e1.pxfuel.com/desktop-wallpaper/947/386/desktop-wallpaper-7-blue-light.jpg")
+	background: url("https://static.vecteezy.com/system/resources/previews/007/724/628/non_2x/blue-chat-bubbles-on-vivid-background-conversation-concept-3d-illustration-vector.jpg")
 		center/cover no-repeat;
 }
 
@@ -33,7 +33,7 @@ body {
 	gap: 15px;
 
 	p {
-		background-color: rgb(20, 45, 59);
+		background-color: rgb(39, 72, 91);
 		border-radius: 5px;
 		padding: 5px 12px;
 	}
@@ -42,7 +42,7 @@ body {
 		align-self: flex-end;
 
 		p {
-			background-color: rgb(51, 51, 242);
+			background-color: rgb(51, 156, 242);
 		}
 	}
 }

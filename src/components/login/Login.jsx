@@ -109,6 +109,7 @@ export default function Login() {
 					className="w-[92%] md:w-[300px] flex flex-col items-center justify-center gap-[22px] md:gap-[20px]"
 				>
 					<input
+						required
 						type="email"
 						name="email"
 						autoComplete="off"
@@ -130,11 +131,11 @@ export default function Login() {
 					</button>
 				</form>
 				<p className="md:hidden" onClick={() => setIsLogin((prev) => !prev)}>
-					If you dont have an account ! register
+					Do not have an account yet ? Create New
 				</p>
 			</div>
 
-			<div className="w-[1px] h-[80%] bg-[#545454]"></div>
+			<div className="hidden md:block w-[1px] h-[80%] bg-[#545454]"></div>
 
 			{/* Register */}
 			<div
@@ -174,6 +175,7 @@ export default function Login() {
 						className="loginInputs"
 					/>
 					<input
+						required
 						type="email"
 						name="email"
 						autoComplete="off"
@@ -195,7 +197,7 @@ export default function Login() {
 					</button>
 				</form>
 				<p className="md:hidden" onClick={() => setIsLogin((prev) => !prev)}>
-					If you have an account ! login
+					If you have an account ! Login
 				</p>
 			</div>
 		</div>
