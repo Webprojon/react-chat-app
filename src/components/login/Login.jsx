@@ -102,7 +102,7 @@ export default function Login() {
 					${isLogin ? "hidden" : "flex"}`}
 			>
 				<h2 className="text-[30px] tracking-wide font-semibold">
-					Welcome back,
+					Welcome back
 				</h2>
 				<form
 					onSubmit={handleLogin}
